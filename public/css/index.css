@@ -1,0 +1,49 @@
+/* min-width para aplicar estilos de esa anchura hacia arriba
+La anchura es la dicha del navegador*/
+@media (min-width: 580px) {
+    .ofertas:hover{
+        transform: scale(1.1);
+    }
+}
+.ofertas:hover{
+    border: 2px solid rgb(73, 132, 241);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.ofertas{
+    border: 2px solid rgba(0, 0, 0, 0); 
+    transition: border 0.5s, transform 0.5s, background-color 0.5s;
+}
+#reparar, #comprar{
+    margin-bottom: 5%;
+}
+.fondo-ofertas{
+    background-image: url("../image/Imagen_reparacion.jpg");
+}
+.fondo-info{
+    background-image: url('../image/creacion_imagen_reparacion3.jpg');
+}
+.fondo{
+    background-size: cover;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+.info{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-bottom: 0.5%;
+    /* border: 4px solid rgba(77, 74, 74); */
+}
+.div-info{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 2px solid gray;
+}
+a,span,h2,p{
+    color: white;    
+}
+h2,p{
+    cursor: default;
+}
+#usuario_info{
+    cursor: default;
+    text-decoration: none;
+}
