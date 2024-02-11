@@ -1,0 +1,16 @@
+.marco{
+    border-left: 2px solid rgb(168, 166, 166);
+}
+input{
+    margin-top: 4%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.fondo{
+    background-image: url('../image/creacion_imagen_reparacion.jpg');
+    background-size: cover;
+}
+span{
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/reparacion.css">
+    <title>Solicitud de reparacion </title>
+</head>
+<style>
+    .full-height{
+        height: 100vh;
+    }
+</style>
+<body class="bg-dark fondo full-height">
+    <header></header>
+    <main class="form-signin align-items-center">
+        <div class="container-fluid text-center">
+            <div class="row ">
+                <div class="col-md-3 col-1"></div>
+                <div class="col-md-6 col-10 marco">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <h2 class="text-white">Realizar pedido de reparación</h2>
+                            <form action="/" method="GET">
+                                <!-- Primera parte del formulario -->
+                                <div class="form-group" id="form1">                                    
+                                    <div class="form-floating margen">
+                                        <input type="number" name="i_monto"id="i_monto" class="form-control" placeholder="Monto inicial">
+                                        <label for="i_monto">Monto inicial</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="i_solvencia" id="i_solvencia" class="form-control" placeholder="Solvencia economica">
+                                        <label for="i_solvencia">Solvencia económica</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="number" name="i_plazos" id="i_plazos" class="form-control"
+                                        placeholder="Cantidad de plazos" min="0" max="8">
+                                        <label for="i_plazos">Cantidad de plazos</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" id="i_marca" class="form-control"
+                                        placeholder="Marca del auto">
+                                        <label for="i_marca">Marca del auto</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" id="i_modelo" class="form-control"
+                                        placeholder="Modelo del auto">
+                                        <label for="i_modelo">Modelo del auto</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" id="i_matricula" class="form-control"
+                                        placeholder="Matricula del auto">
+                                        <label for="i_matricula">Matricula del auto</label>
+                                        <div class="d-flex">
+                                            <p  id="err_matricula">Esa matricula ya existe</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <input type="button" id="siguiente_b" value="Siguente" class="btn btn-primary">
+                                        <label for="siguiente_b"></label>
+                                    </div>                                    
+                                </div>
+                                <!-- Segunda parte del formulario -->
+                                <div class="form-group" id="form2" hidden>
+                                    <div id ="d_montoPorPlazos">
+                                    </div> 
+                                    <div class="form-floating">
+                                        <input type="text" id="i_marca" placeholder="Marca del auto" class="form-control">                                        
+                                        <label for="i_marca">Marca del auto</label>                                        
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" id="i_modelo" placeholder="Modelo del auto" class="form-control">                                        
+                                        <label for="i_marca">Modelo del auto</label>                                        
+                                    </div>
+                                                                      
+                                    <div>
+                                        <label for="i_paga" class="form-label text-white"                                        
+                                        style="width: 100%; text-align: left;">Tipo de paga</label>                                            
+                                        <select id="i_paga" class="form-select" required>
+                                            <option value="fisico">Efectivo</option>
+                                            <option value="targeta">Targeta digital</option>
+                                        </select>                                        
+                                    </div>
+                                    <div class="form-floating" hidden>
+                                        <input type="text" id="i_targeta" class="form-control" placeholder="Targeta">
+                                        <label for="i_targeta">Targeta</label>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <input type="button" value="Volver" class="btn btn-primary" id="volver_b" onclick="cambio()">
+                                        <input type="button" value="Terminar" class="btn btn-primary" id="terminar_b">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-1">
+                
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <footer></footer>
+</body>
+<script src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="../js/reparacion.js"></script>
+</html>

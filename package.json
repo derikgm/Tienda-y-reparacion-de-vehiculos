@@ -1,0 +1,24 @@
+{
+  "name": "tienda-y-reparacion-de-vehiculos",
+  "version": "0.0.1",
+  "description": "Servidor que controla la gestion de un taller de automoviles",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Taller",
+    "reparacion",
+    "automoviles"
+  ],
+  "author": "Derik",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-method-override": "^0.0.3",
+    "path": "^0.12.7",
+    "pg": "^8.11.3"
+  }
+}
