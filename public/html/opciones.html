@@ -7,49 +7,137 @@
   <link rel="stylesheet" href="../css/opciones.css">
   <title>Opciones</title>
 
-  <style>
-    h2{
-      cursor: default;
-    }
-    .sidebar{
-      border-right: 1px white solid;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100; /* Behind the navbar */
-      padding: 48px 0 0; /* Height of navbar */ 
-    }
-    .panel-opciones{
-      padding-bottom: 10px; 
-      border-bottom: 2px solid gray;
-    }
-    @media (min-width: 767px) {
-      #barra_opciones{
-        margin-top: 38%;        
-      }
-      .nav-item{
-        margin-top: 11%;
-      }
-    }
-  </style>
 </head>
 <body class="bg-dark">
-  <header class="navbar navbar-dark sticky-top bg-dark border-bottom">
-    <!-- px-n parece ser una manera de trabajar con el padding al eje x -->
-    <a class="navbar-brand px-3" href="/">CarShop</a>
+
+  <!-- Ventana modal -->
+  <div class="modal modal-sheet bg-secondary py-5" tabindex="-1" role="dialog" id="modalSheet" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content rounded-6 shadow" >
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="titulo_modal">Comprar auto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          onclick="ventana_modal.style.display = 'none'"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p>Ingrese el numero de la targeta electronica para efecutar la paga</p>
+          <p id="id_paga"></p>
+          <form action="" method="get" class="form">
+              <div class="form-group row">
+                <div class="form-floating">
+                  <input class = "form-control" type="text" name="" id="i_targeta" placeholder="Targeta">
+                  <label for="i_targeta">Targeta</label>
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-between border-top-0">
+          <button type="button" class="btn btn-secondary mx-0" data-bs-dismiss="modal"
+          onclick="ventana_modal.style.display = 'none'">Cancelar</button>
+          <button id="b_paga"type="button" class="btn btn-primary mx-0 mb-2" onclick="pagar(this.innerHTML)">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ventana para busqueda de autos -->
+  <div class="modal modal-sheet bg-secondary py-5" tabindex="-1" role="dialog" id="buscar_modal" >
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content rounded-6 shadow" >
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title">Buscar según</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          onclick="buscar_modal.style.display = 'none'"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p>Seleccione segun las caracteristicas que usted busca</p>
+          <form action="" method="GET" class="form" id="buscar_form">
+              <div class="form-group">
+                <h6>Marca</h6>
+
+                  <label>
+                    <input type="checkbox" name="Bugatti" id="Bugatti">
+                    <label for="Bugatti">Bugatti</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Mustang" id="Mustang">
+                    <label for="Mustang">Mustang</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Kai" id="Kai">
+                    <label for="Kai">Kai</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Chevrolet" id="Chevrolet">
+                    <label for="Chevrolet">Chevrolet</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Lada" id="Lada">
+                    <label for="Lada">Lada</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Mercedez" id="Mercedez">
+                    <label for="Mercedez">Mercedez</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="Yamaha" id="Yamaha">
+                    <label for="Yamaha">Yamaha</label>
+                  </label>
+
+                  <h6>Precio</h6>
+                  <label>
+                    <input type="checkbox" name="between 3000 and 4000" id="i_3-4">
+                    <label for="i_3-4">3000 - 4000</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="between 4000 and 5000" id="i_4-5">
+                    <label for="i_4-5">4000 - 5000</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="between 5000 and 6000" id="i_5-6">
+                    <label for="i_5-6">5000 - 6000</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="between 6000 and 7000" id="i_6-7">
+                    <label for="i_6-7">6000 - 7000</label>
+                  </label><br>
+                  <label>
+                    <input type="checkbox" name="between 7000 and 8000" id="i_7-8">
+                    <label for="i_7-8">7000 - 8000</label>
+                  </label>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-between border-top-0">
+          <button type="button" class="btn btn-secondary mx-0" data-bs-dismiss="modal"
+          onclick="buscar_modal.style.display = 'none'">Cancelar</button>
+          <button type="button" class="btn btn-primary mx-0 mb-2" onclick="buscar_segun()">Buscar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-2 text-center col-lg-2 me-0 px-3" href="/">Carshop</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" id="collapse"
+    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+     <div class="w-100"></div>
     <div class="navbar-nav">
-      <div class="nav-item">
-        <a href="/" class="px-3 btn btn-outline-light">Desconectarse</a>
+      <div class="nav-item text-nowrap">
+        <a class="btn btn-outline-light px-3" href="/">Desconectarse</a>
       </div>
     </div>
   </header>
-
+  
   <main>
     <!-- Barra lateral -->
     <div class="container-fluid">
       <div class="row">
-        <nav class="sidebar bg-dark col-md-2 d-md-block collapse">
+        <!-- <nav class="sidebar bg-dark col-md-2 d-md-block collapse"> -->
+        <nav id="sidebarMenu"
+        class="col-md-2 col-lg-2 d-md-block bg-dark sidebar collapse">
           <div class="position-sticky pt-3" >
             <ul class="nav flex-column" id="barra_opciones">
               <li class="nav-item"><a class="nav-link text-white" id="b_comprar" href="#Comprar">Comprar</a></li>
@@ -58,14 +146,16 @@
             </ul>
           </div>
         </nav>
-
+  
         <!-- Contenido -->        
         <!--Compras-->
         <div class="col-md-10 ms-sm-auto px-md-4" id="d_comprar"><!-- ms-sm-auto permite ajustar aunque exista un side bar con fixed -->
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h2 class="text-white">Comprar</h1>          
+            <h2 class="text-white">Comprar</h1>       
+            <button type="button" class="btn btn-secondary"
+            onclick="buscar_modal.style.display='flex'">Buscar según</button>
+  
           </div>
-          <button type="button" class="btn btn-outline-light">Buscar según</button>
             <div class="table-responsive">
               <table class="table table-hover table-dark">
                 <thead>
@@ -82,15 +172,42 @@
                 </tbody>
               </table>
             </div>
+  
+            
+  
         </div>
-
+  
         <!-- Facturas -->
         <div class="col-md-10 ms-sm-auto px-md-4" id="d_facturas">
+  
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h2 class="text-white">Facturas</h1>          
+            <h2 class="text-white">Facturas</h2>
+  
+            <div class="navbar navbar-dark navbar-expand" aria-label="Eleventh navbar example"
+            style="padding: 0%;">
+                <ul class="navbar-nav">
+                  <li >
+                  <a class="nav-link" id="ascen" onclick="cambio_orden(this)" style="cursor: pointer;">Ascendente</a>
+                  </li>
+                  <!-- Dropdown -->
+                  <li class="dropdown">
+                    <button id="usuario_info" class="dropdown-toggle btn btn-secondary" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="color:white; cursor: pointer;">Ordenar según</button>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdown09">
+                      <li><a onclick="ordenar((a,b)=>{return asc*(a.id-b.id)})" href="#" class="dropdown-item" id="a_id">Id</a></li>
+                      <li><a onclick="ordenar((a,b)=>{return asc*(b.tipo_pago.localeCompare(a.tipo_pago));})" href="#" class="dropdown-item">Tipo de pago</a></li>
+                      <li><a onclick="ordenar((a,b)=>{return asc*(a.anio-b.anio)})" href="#" class="dropdown-item">Fecha de vencimiento</a></li>
+                      <li><a onclick="ordenar((a,b)=>{return asc*(a.monto_total-b.monto_total)})" href="#" class="dropdown-item">Monto total</a></li>
+                      <li><a onclick="ordenar((a,b)=>{return asc*(a.paternidad-b.paternidad)})" href="#" class="dropdown-item">Paternidad</a></li>
+                    </ul>
+                  </li>                  
+                </ul>
+            </div>          
           </div>
+  
           
-          <div class="table-responsive">
+  
+          <div class="table-responsive" id="zona_tabla">
             <table class="table table-hover table-dark">
               <thead>
                 <tr>
@@ -98,18 +215,16 @@
                   <th>Tipo de pago</th>
                   <th>Fecha de expiacion</th>
                   <th>Monto total</th>
+                  <th>Id de factura padre</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                </tr>
+              <tbody id="tbody_facturas">
               </tbody>
             </table>
           </div>
           
         </div>
-
+  
         <!-- Opciones Generales -->
         <div class="col-md-10 ms-sm-auto px-md-4" id="d_opciones">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom text-white">
@@ -127,27 +242,41 @@
             </div>
             
             <div class="panel-opciones">
-              <h4>Tema:</h4>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" id="color" checked>
-                <label class="form-check-label"for="color">Oscuro</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" id="color">
-                <label class="form-check-label"for="color">Claro</label>
-              </div>
+              <form action="">
+                <h4>Tema:</h4>
+                <div class="form-check">
+                  <input name = "tema"class="form-check-input" type="radio" id="color" checked>
+                  <label class="form-check-label"for="color">Oscuro</label>
+                </div>
+                <div class="form-check">
+                  <input name = "tema"class="form-check-input" type="radio" id="color">
+                  <label class="form-check-label"for="color">Claro</label>
+                </div>
+              </form>
             </div>
           </div>
+  
+          <button class="btn btn-outline-warning my-3" id="aplicar_cambios">Aplicar cambios</button>
         </div>
-
+  
       </div>
     </div>
   </main>
 
-  
-  
+  <!-- <main>
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" style="color: white"
+        class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+          HELLo!
+        </nav>
+      </div>
+    </div>
+  </main> -->
 
   <footer></footer>
 </body>
 <script src="../js/opciones.js"></script>
+<script src="../js/validacion.js"></script>
+<script src="../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </html>

@@ -10,25 +10,26 @@
 </head>
 <body class="text-center bg-dark">
     <main class="form-signin">
-        <form method="GET" action="/" >
+        <form method="GET" action="/" id="formulario">
           <img class="mb-4" src="../image/CarShopIcon-dark.png" alt="" width="72" height="72">
           <h1 class="h3 mb-3 fw-normal text-white">Porfavor autentifiquese</h1>
       
           <div class="form-floating">
             <input type="text" class="form-control" id="i_usuario" placeholder="Usuario">
             <label for="i_usuario">Usuario</label>
+            <p class="error_h" id="mensaje_e">Usuario o contraseña equivocado</p>
           </div>
           <div class="form-floating">
             <input type="password" class="form-control" id="i_contra" placeholder="Contraseña">
             <label for="i_contra">Contraseña</label>
           </div>
       
-          <div class="checkbox mb-3">
+          <!-- <div class="checkbox mb-3">
             <label>
               <input type="checkbox" value="Recuerdame" id="i_recuerdame"> 
               <label for="i_recuerdame" style="color:white">Recuerdame</label>
             </label>
-          </div>
+          </div> -->
           <button class="w-100 btn btn-lg btn-outline-light" type="button" id="autentificar">
             Autentificar
           </button>

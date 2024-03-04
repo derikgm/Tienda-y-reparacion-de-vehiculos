@@ -42,3 +42,15 @@ input{
   margin-top: 10px;
 }
 
+.error_h{
+  font-weight: bold;
+  user-select: none;
+  text-align: center;
+  color: rgba(0, 0, 0, 0);
+}
+.error{
+font-weight: bold;
+user-select: none;
+text-align: center;
+color: rgb(255, 30, 30);
+}

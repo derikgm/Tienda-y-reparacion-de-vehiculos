@@ -32,9 +32,9 @@
                 </a>   
 
                 <!-- Barra de navegacion -->
-                <nav class="navbar navbar-expand-sm navbar-dark rounded" aria-label="Eleventh navbar example">
+                <nav class="navbar navbar-expand navbar-dark rounded" aria-label="Eleventh navbar example">
                     <div class="text-end">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav d-flex justify-content-center">
                             <li class="nav-item">
                                 <a id="aut_boton" href="/login" type="button" class="btn btn-outline-light me-2">Autentificarse</a>
                             </li>
@@ -45,12 +45,14 @@
                             <li class="nav-item dropdown">
                                 <a id="usuario_info" class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false"
                                 style="color:white; cursor: pointer;"></a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdown09"
+                                <ul class="dropdown-menu dropdown-menu-dark col-sm-12" aria-labelledby="dropdown09"
                                 style="left:-78px; top:30px;">
-                                  <li><a class="dropdown-item" href="/reparacion">Solicitar reparacion</a></li>
-                                  <li><a class="dropdown-item" href="/opciones">Ver opciones</a></li>
-                                  <li><a class="dropdown-item" href="#">Modo claro</a></li>
-                                  <li><a class="dropdown-item" href="#" hidden>Modo oscuro</a></li>
+                                  <!-- <li><a class="dropdown-item" href="/reparacion">Solicitar reparacion</a></li> -->
+                                  <li><a id="a_compra"class="dropdown-item" href="/opciones">Solicitar compra</a></li>
+                                  <li><a id="a_factura"class="dropdown-item" href="/opciones">Ver facturas</a></li>
+                                  <li><a id="a_opciones"class="dropdown-item" href="/opciones">Ver opciones</a></li>
+                                  <!-- <li><a class="dropdown-item" href="#">Modo claro</a></li> -->
+                                  <!-- <li><a class="dropdown-item" href="#" hidden>Modo oscuro</a></li> -->
                                   <li><div class="dropdown-divider"></div></li>
                                   <li><a class="dropdown-item" href="#" id="desc_boton">Desconectar</a></li>
                                 </ul>
@@ -129,7 +131,5 @@
 
 </body>
 <script src="../js/index.js"></script>
-<script src="../bootstrap-5.1.3-dist/js/bootstrap.bundle.js"></script>
 <script src="../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </html>

@@ -9,6 +9,7 @@
 
 </head>
 <body class="text-center bg-dark fondo">
+    <header></header>
     <main>
         <div class="container-fluid">
           <div class="row">
@@ -20,46 +21,69 @@
                   <div class="col-sm-1"></div>
                   <div class="col-sm-10">
                     <div class="form-signin">
-                      <form method="GET" action="./index.html"style="margin-top: 8%;">
+                      <form method="POST" action="/crear_usuario" style="margin-top: 8%;" id="formulario">
                         <img class="mb-4" src="../image/CarShopIcon-dark.png" alt="" width="72" height="72">
                         <h1 class="h3 mb-3 fw-normal text-white">Crear una cuenta</h1>
                     
+                       <div class="form-group">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="i_cliente" placeholder="Usuario">
+                          <input name ="Nombre" type="text" class="form-control bordeado" id="i_cliente" placeholder="Usuario">
                           <label for="i_cliente">Nombre <span>*</span></label>
+                          <p class="error_h">Rellene el campo de Nombre</p>
+                          <p hidden class="error">Requiere 4 caracteres o más</p>
                         </div>
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="i_CI" placeholder="Usuario">
+                          <input name = "Carnet" type="text" class="form-control bordeado" id="i_CI" placeholder="Usuario">
                           <label for="i_CI">Carnet de identidad <span>*</span></label>
+                          <p class="error_h">El carnet necesita tener 11 digitos</p>
                         </div>
                         <div class="form-floating">
-                          <input type="number" class="form-control" id="i_edad" placeholder="Usuario"
+                          <input name = "Edad" type="number" class="form-control bordeado" id="i_edad" placeholder="Usuario"
                           min="18" max="130">
                           <label for="i_edad">Edad <span>*</span></label>
+                          <p class="error_h">Rellene el campo de edad</p>
+                          <p hidden class="error">La edad tiene que estar entre los 18 y 130 años</p>
                         </div>
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="i_direccion" placeholder="Usuario">
+                          <input name = "Direccion" type="text" class="form-control bordeado" id="i_direccion" placeholder="Usuario">
                           <label for="i_direccion">Direccion <span>*</span></label>
+                          <p class="error_h">Rellene el campo de Direccion</p>
+                          <p hidden class="error">Requiere entre 10 y 250 caracteres</p>
                         </div>
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="i_telefono" placeholder="Usuario">
+                          <input name = "Telefono" type="text" class="form-control bordeado" id="i_telefono" placeholder="Usuario">
                           <label for="i_telefono">Telefono</label>
+                          <p class="error_h">Rellene el campo de edad</p>
+                          <p hidden class="error">Se require 8 digitos</p>
                         </div>
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="i_usuario" placeholder="Usuario">
+                          <input name = "Nombre_usuario" type="text" class="form-control bordeado" id="i_usuario" placeholder="Usuario">
                           <label for="i_usuario">Nombre de Usuario <span>*</span></label>
+                          <p class="error_h">Rellene el campo de nombre de usuario</p>
+                          <p hidden class="error">Ese usuario ya existe</p>
                         </div>          
                         <div class="form-floating">
-                          <input type="password" class="form-control" id="i_contra" placeholder="Contraseña">
+                          <input name = "Contra" type="password" class="form-control bordeado" id="i_contra" placeholder="Contraseña">
                           <label for="i_contra">Contraseña <span>*</span></label>
+                          <p class="error_h">Rellene el campo de contraseña</p>
+                          <p hidden class="error">Las contraseñas no coinciden</p>
+                          <p hidden class="error">La contraseña debe de tener 
+                            <span id="s_num">numeros</span>, 
+                            <span id="s_mayus">mayusculas</span>, 
+                            <span id="s_minus">minusculas</span>, y 
+                            <span id="s_ce">caracteres especiales</span></p>
+
                         </div>
                         <div class="form-floating">
-                          <input type="password" class="form-control" id="i_contraR" placeholder="Repetir Contraseña">
+                          <input name = "ContraR" type="password" class="form-control bordeado" id="i_contraR" placeholder="Repetir Contraseña">
                           <label for="i_contraR">Repetir Contraseña <span>*</span></label>
+                          <p class="error_h">Rellene el campo de repetir contraseña </p>
+                          <p hidden class="error">Las contraseñas no coinciden</p>
                         </div>
+                       </div>
                     
                         <button class="w-100 btn btn-lg btn-outline-light" type="button" id="crear_boton" 
-                        style="margin-top: 30px;">
+                        style="margin-top: 30px;" onclick="activar_validacion()">
                           Crear
                         </button>
                         <p class="mt-5 mb-3 text-muted">CarShop &copy;2024</p>
@@ -75,4 +99,5 @@
       </main>
 </body>
 <script src="../js/creacion.js"></script>
+<script src="../js/validacion.js"></script>
 </html>

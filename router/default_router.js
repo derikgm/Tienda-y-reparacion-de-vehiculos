@@ -3,7 +3,6 @@
 const default_controller = require('../controller/default_controller');
 const express = require('express');
 const router = express.Router();
-const public_dir = 'D:/Derik/Proyectos programacion/Web/Tienda y reparacion de vehiculos/public'; 
 
 router
     .get('/', default_controller.index)
@@ -12,9 +11,14 @@ router
     .get('/reparacion',default_controller.reparacion)
     .get('/opciones',default_controller.opciones)
     .get('/obtener-autos',default_controller.obtener_autos)
-    .get('/obtener-facturas',default_controller.obtener_facturas)
-    .use((req,res,next)=>{
-        res.render('error');
-    });
+    .get('/obtener-facturas/:nombre_usuario',default_controller.obtener_facturas)
+    .get('/obtener-ci/:nombre_usuario',default_controller.obtener_ci)
+    .get('/obtener_usuario/:nombre_usuario',default_controller.obtener_usuario)
+    .get('/autentificar_usuario/:usuario/:contra',default_controller.autentificar_usuario)
+    .post('/buscar_segun',default_controller.buscar_segun)
+    .post('/crear_usuario',default_controller.crear_usuario)
+    .delete('/eliminar-fac/:macro_fac/:micro_fac/:clienteCi', default_controller.eliminar_factura)
+    .delete('/comprar_coche/:matricula', default_controller.comprar_coche)
+    .use(default_controller.error404);
 
 module.exports = router;

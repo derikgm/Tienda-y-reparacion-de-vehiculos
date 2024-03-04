@@ -20,7 +20,7 @@ app
     .set('view engine', 'pug')
     .set('port', port)
     // Uses
-    .use(body_parser.json({ extended: true }))
+    .use(body_parser.json())
     .use(body_parser.urlencoded({ extended: true }))
     .use(restFull)
     .use(public_dir)
